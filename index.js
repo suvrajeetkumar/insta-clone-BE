@@ -2,12 +2,15 @@ const express = require('express');
 const {MONGOURI} = require('./keys');
 var bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const cors = require('cors');
 // qKXFQ07za0PoZUwj
 
 //connect to mongodb
 // mongoose.connect('mongodb://localhost:27017/instagram', {useNewUrlParser: true});
 
 // donot uncomment the above 2 lines they were commented from start.
+
+
 
 mongoose.connect(MONGOURI,{useNewUrlParser: true});
 mongoose.connection.on('connected',()=>{
@@ -27,7 +30,7 @@ const postroutes = require('./routes/post');
 //bodyparser
 app.use(bodyParser.json());
 
-
+app.use(cors());
 
 
 
